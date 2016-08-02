@@ -36,13 +36,20 @@ class ContactsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+       
+        // Adds EDIT button to the NavBar
         let moveButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: Selector(("toggleEdit")))
         navigationItem.leftBarButtonItem = moveButton
         
         // changes the editing property of the table view to the opposite of its current value. If is editing, it is set to false. If it is not editing, it is set to true.
         func toggleEdit() {
             tableView.setEditing(!tableView.isEditing, animated: true)  // .setEditing provides an animation effect.
+            
+            // let doneButton = UIBarButtonItem()
+            // doneButton.title = "Done"
+            // navigationItem.leftBarButtonItem = doneButton
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,20 +123,26 @@ class ContactsTableViewController: UITableViewController {
         }    
     }
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        
+        // First remove the contact from the array and then put it back into a new spot. 
+       // let contactMoving = contacts.remove(at: fromIndexPath.row)
+        // contacts.insert(contactMoving, at: fromIndexPath.row)
+        
+        let itemToMove = contacts[fromIndexPath.row]
+        contacts.remove(at: fromIndexPath.row)
+        contacts.insert(itemToMove, at: fromIndexPath.row)
     }
-    */
+    
 
-    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+
 
   
     // MARK: - Navigation
