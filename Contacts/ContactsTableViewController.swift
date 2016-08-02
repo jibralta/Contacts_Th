@@ -35,6 +35,14 @@ class ContactsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let moveButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: Selector(("toggleEdit")))
+        navigationItem.leftBarButtonItem = moveButton
+        
+        // changes the editing property of the table view to the opposite of its current value. If is editing, it is set to false. If it is not editing, it is set to true.
+        func toggleEdit() {
+            tableView.setEditing(!tableView.isEditing, animated: true)  // .setEditing provides an animation effect.
+        }
     }
 
     override func didReceiveMemoryWarning() {
